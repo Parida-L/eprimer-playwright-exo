@@ -1,0 +1,23 @@
+{
+  "name": "eprimer-playwright-exo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Parida-L/eprimer-playwright-exo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Parida-L/eprimer-playwright-exo/issues"
+  },
+  "homepage": "https://github.com/Parida-L/eprimer-playwright-exo#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.5",
+    "playwright": "^1.49.1"
+  }
+}
