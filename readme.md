@@ -1,18 +1,8 @@
 # Guide : Démarrer un Projet Playwright
 
-## Prérequis
-
-Avant de commencer, assurez-vous que les outils suivants sont installés sur votre machine :
-
-- **Node.js** : Fournit l'environnement JavaScript pour exécuter Playwright.
-- **npm** : Utilisé pour gérer les dépendances du projet.
-
----
-
 ## Étape 1 : Vérifier les Prérequis
 
 ### Vérifier la présence de Node.js
-
 Exécutez la commande suivante dans votre terminal pour vérifier si Node.js est installé :
 
 ```bash
@@ -24,7 +14,6 @@ Si Node.js n'est pas installé, téléchargez-le depuis [Node.js Official Websit
 ---
 
 ### Vérifier la présence de npm
-
 npm est installé automatiquement avec Node.js. Vérifiez sa présence :
 
 ```bash
@@ -34,7 +23,6 @@ npm -v
 ---
 
 ### Vérifier si Playwright est installé
-
 Si Playwright est déjà installé globalement, vous pouvez vérifier sa version :
 
 ```bash
@@ -179,18 +167,9 @@ mon-projet-playwright/
 
 ---
 
-## Étape 7 : Dépannage
+## Dossiers Supplémentaires
 
-- **Erreur lors de l'installation des navigateurs** :
-  Vérifiez votre connexion internet et relancez :
+- **POM Design Pattern** : Créez un dossier `page-objects`.
+- **Single-Page App (SPA)** : Créez un dossier `helpers/utils`.
 
-  ```bash
-  npx playwright install
-  ```
-
-- **Playwright ou Node.js non reconnu** :
-  Assurez-vous que Node.js est ajouté au PATH de votre système.
-
----
-
-Ce guide mis à jour inclut les détails du processus de génération et d'initialisation de Playwright. 🚀
+Ce guide est prêt pour être utilisé et vous aider à démarrer avec Playwright. 🎉

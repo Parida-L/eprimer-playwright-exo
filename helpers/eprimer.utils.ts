@@ -31,9 +31,7 @@ export async function typeInText(page: Page, text: string) {
     await expect(checkBtn).toBeEnabled();
     //click button
     await checkBtn.click();
-    // Assert that an output element appears
-    // const outputContainer = page.locator('#outputContainer');
-    // await expect(outputContainer).toBeVisible();
+    
 }
 
 //VERIFICATION OF THE OUTPUT
