@@ -12,7 +12,7 @@ L'objectif principal est de mener des tests dynamiques tout en documentant les r
 Avant de commencer, assurez-vous que les prérequis suivants sont respectés :
 - **Node.js** : Vérifiez l'installation avec `node -v`.
 - **npm** : Vérifiez l'installation avec `npm -v`.
-- **Playwright** : Si Playwright n'est pas installé, suivez les étapes détaillées dans le fichier `playwright-init.md`.
+- **Playwright** : Si Playwright n'est pas installé, suivez les étapes détaillées dans le fichier [`playwright-init.md`](./playwright-init.md).
 
 ---
 
@@ -73,7 +73,7 @@ const TEST_CASES = [
 ## Exécution des Tests
 
 ### Initialisation
-Configurez votre environnement en suivant les étapes décrites dans le fichier `playwright-init.md`.
+Configurez votre environnement en suivant les étapes décrites dans le fichier  [`playwright-init.md`](./playwright-init.md).
 
 ### Commandes pour Lancer les Tests
 - Exécuter tous les tests :  
