@@ -1,72 +1,98 @@
 # Tests Exploratoires avec Playwright sur eprimer
 
 ## Introduction
-Ce projet se concentre sur les tests exploratoires utilisant [Playwright](https://playwright.dev/) pour la plateforme **eprimer**, spécifiquement l'application monopage disponible sur [https://exploratorytestingacademy.com/app/](https://exploratorytestingacademy.com/app/). L'objectif est de réaliser des tests dynamiques et de créer une carte mentale pour documenter les résultats.
+Ce projet met en œuvre des tests exploratoires utilisant Playwright pour la plateforme **eprimer**, spécifiquement l'application monopage accessible à l'adresse suivante :  
+[https://exploratorytestingacademy.com/app/](https://exploratorytestingacademy.com/app/).  
+
+L'objectif principal est de mener des tests dynamiques tout en documentant les résultats sous forme de carte mentale.
+
+---
 
 ## Prérequis
-Assurez-vous que les prérequis suivants sont respectés avant de commencer :
-
+Avant de commencer, assurez-vous que les prérequis suivants sont respectés :
 - **Node.js** : Vérifiez l'installation avec `node -v`.
 - **npm** : Vérifiez l'installation avec `npm -v`.
-- **Playwright** : Assurez-vous que Playwright est installé. Sinon, suivez les étapes décrites dans `playwright-init.md`, situé à la racine de ce projet.
+- **Playwright** : Si Playwright n'est pas installé, suivez les étapes détaillées dans le fichier `playwright-init.md`.
 
-## Architecture
-Le projet suit une structure simplifiée adaptée aux applications monopages (pas de modèle POM - Page Object Model) :
+---
+
+## Architecture du Projet
+Voici la structure simplifiée du projet, adaptée aux applications monopages (pas de modèle POM - Page Object Model) :  
 
 ```
-.
 ├── helpers
-│   └── eprimer.utils.ts   # Fonctions utilitaires pour la navigation et la vérification
+│   └── eprimer.utils.ts    # Fonctions utilitaires pour navigation et vérification
 ├── tests
-│   └── eprimer.spec.ts    # Script principal de test exploratoire
-├── playwright.config.ts   # Configuration de Playwright
-├── playwright-init.md     # Étapes pour initialiser l'environnement Playwright
-├── package.json           # Métadonnées et dépendances du projet
-└── README.md              # Documentation
+│   └── eprimer.spec.ts     # Script principal des tests exploratoires
+├── playwright.config.ts    # Configuration de Playwright
+├── playwright-init.md      # Guide pour initialiser Playwright
+├── package.json            # Métadonnées et dépendances
+└── README.md               # Documentation principale
 ```
 
-### Fichiers clés
-
+### Fichiers Clés
 - **helpers/eprimer.utils.ts** : Contient des fonctions réutilisables pour la navigation, la saisie et la vérification des sorties.
-- **tests/eprimer.spec.ts** : Contient les cas de test pour valider différents scénarios.
+- **tests/eprimer.spec.ts** : Contient les scénarios de test pour valider différents cas d'usage.
+
+---
+
+## Étapes des Tests Exploratoires à Retenir
+
+1. **Tester avec notre première impression** : évaluer l'application à partir de notre ressenti initial.  
+2. **Tester avec la connaissance du domaine ou la documentation** : exploiter ce que l'on sait déjà.  
+3. **Tester en mettant l’accent sur les fonctionnalités** : valider à la fois le code et l’interface utilisateur.  
+4. **Tester en se concentrant sur les données** : vérifier les entrées valides et non valides en utilisant le partitionnement des classes d'équivalence et l’analyse des valeurs limites.  
+5. **Tester en considérant l’environnement** : examiner si des facteurs externes influencent les fonctionnalités.  
+6. **Tester avec un mindmap comme documentation** : visualiser les flux, les fonctionnalités et les résultats des tests.  
+7. **Tester avec nos tests automatisés existants** : intégrer les explorations aux suites de tests automatisés.  
+8. **Tester en automatisant davantage** : identifier les opportunités pour écrire des tests supplémentaires.
+
+---
 
 ## Scénarios de Test
-Le script de test exploratoire (`eprimer.spec.ts`) exécute une série de scénarios prédéfinis. Exemple de cas de test :
+Le fichier `eprimer.spec.ts` exécute une série de scénarios prédéfinis. Chaque scénario teste une entrée textuelle et valide plusieurs résultats, notamment :  
+- Le nombre total de mots.  
+- Les mots déconseillés.  
+- Les violations potentielles.  
 
-```typescript
+### Exemple de Scénario
+```javascript
 const TEST_CASES = [
-    {   testName: "forme au présent - I AM", 
-        text: "I am what I am", 
-        expctWordCount: "5", 
-        expctDiscouragedWord: "2", 
-        expctPossibleViolations: "0" 
+    {
+        testName: "forme au présent - I AM",
+        text: "I am what I am",
+        expctWordCount: "5",
+        expctDiscouragedWord: "2",
+        expctPossibleViolations: "0"
     }
 ];
 ```
 
-Chaque scénario teste des entrées textuelles spécifiques et valide les comptes de mots, les mots déconseillés et les violations possibles.
+---
 
 ## Exécution des Tests
 
 ### Initialisation
-Suivez les étapes dans `playwright-init.md` pour configurer votre environnement.
+Configurez votre environnement en suivant les étapes décrites dans le fichier `playwright-init.md`.
 
-### Lancer les Tests
-1. Exécutez tous les tests :
-   ```bash
-   npx playwright test
-   ```
-2. Exécutez un test spécifique :
-   ```bash
-   npx playwright test tests/eprimer.spec.ts
-   ```
+### Commandes pour Lancer les Tests
+- Exécuter tous les tests :  
+  ```bash
+  npx playwright test
+  ```
+- Exécuter un test spécifique :  
+  ```bash
+  npx playwright test tests/eprimer.spec.ts
+  ```
+
+---
 
 ## Aperçu du Code
 
-### `eprimer.spec.ts`
-Ce fichier parcourt les cas de test et les valide dynamiquement :
+### Fichier `eprimer.spec.ts`
+Ce fichier itère sur les cas de test et les valide dynamiquement :
 
-```typescript
+```javascript
 import { test } from '@playwright/test';
 import { navigateToSite, outputVerification, typeInText } from '../helpers/eprimer.utils';
 
@@ -79,12 +105,12 @@ const TEST_CASES = [
         expctDiscouragedWord: "2",
         expctPossibleViolations: "0"
     },
-    // Plus de cas de test...
+    // Ajouter d'autres cas de test ici...
 ];
 
-test.describe('Tests eprimer', () => {
+test.describe('Tests Exploratoires eprimer', () => {
     for (const { testName, text, expctWordCount, expctDiscouragedWord, expctPossibleViolations } of TEST_CASES) {
-        test(`Eprimer exclut : "${testName}"`, async ({ page }) => {
+        test(`"${testName}"`, async ({ page }) => {
             await navigateToSite(page, url);
             await typeInText(page, text);
             await outputVerification(page, expctWordCount, expctDiscouragedWord, expctPossibleViolations);
@@ -93,17 +119,11 @@ test.describe('Tests eprimer', () => {
 });
 ```
 
-### `eprimer.utils.ts`
-Contient des fonctions utilitaires pour gérer la navigation, la saisie et la vérification des sorties :
+### Fichier `eprimer.utils.ts`
+Contient des fonctions utilitaires pour automatiser les interactions :  
 
-- **navigateToSite** : Navigue vers l'URL et valide le titre de la page et la réponse API.
-- **typeInText** : Remplit le champ de saisie de texte et déclenche le bouton "Check For E-Prime".
-- **outputVerification** : Vérifie les comptes de mots, les mots déconseillés et les violations possibles.
-
-Exemple :
-
-```typescript
-export async function navigateToSite(page: Page, url: string) {
+```javascript
+export async function navigateToSite(page, url) {
     await page.goto(url);
     await expect(page).toHaveURL(url);
     const response = await page.request.get(url);
@@ -113,11 +133,22 @@ export async function navigateToSite(page: Page, url: string) {
 }
 ```
 
+---
+
 ## Carte Mentale
-Après avoir terminé les tests exploratoires, créez une carte mentale pour visualiser les flux, les fonctionnalités et les cas de test potentiels de l'application. Des outils comme [XMind](https://www.xmind.net/) ou [Miro](https://miro.com/) peuvent être utilisés.
+Après avoir terminé les tests exploratoires, créez une carte mentale pour documenter :
+- Les flux de l'application.
+- Les fonctionnalités couvertes.
+- Les cas de test potentiels.
+
+Utilisez des outils comme **XMind** ou **Miro** pour créer cette carte mentale.
+
+---
 
 ## Contribution
-Les contributions sont les bienvenues pour améliorer les scénarios de test ou la structure. Soumettez une pull request pour examen.
+Les contributions sont les bienvenues pour enrichir les scénarios de test ou optimiser la structure du projet. Soumettez vos améliorations via une pull request.
+
+---
 
 ## Licence
-Ce projet est sous licence [MIT License](./LICENSE).
+Ce projet est sous licence **MIT License**.
